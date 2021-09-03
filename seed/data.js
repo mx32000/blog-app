@@ -13,7 +13,7 @@ const insertData = async () => {
       title: faker.lorem.sentence(),
       image_url: faker.internet.url(),
       content: faker.lorem.paragraph(),
-      author: faker.lorem.name(),
+      author: faker.name.findName(),
     };
   });
   await Post.insertMany(posts);
