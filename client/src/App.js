@@ -1,7 +1,14 @@
-import "./App.css"
+import "./App.css";
+import { getPosts } from "./services/post.js";
 
 function App() {
-  return <h1>GET GJAMED!</h1>
+  const posts = getPosts();
+
+  return (
+    {
+      posts.map((post, index) => <p>{post.title}</p>)
+    }
+  );
 }
 
-export default App
+export default App;
