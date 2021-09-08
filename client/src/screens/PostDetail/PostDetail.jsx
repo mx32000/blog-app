@@ -29,6 +29,9 @@ export default function PostDetail() {
   return (
     <Layout>
       <h1>{post.title}</h1>
+      <img src={post.image_url} alt="picture" />
+      <p>{post.content}</p>
+      <p>{post.author}</p>
     </Layout>
   )
 }
