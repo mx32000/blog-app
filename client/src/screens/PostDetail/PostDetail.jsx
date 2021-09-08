@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPost } from "../../services/post"
+import Layout from "../../components/Layout/Layout"
 
 export default function PostDetail() {
   const [post, setPost] = useState(null)
@@ -18,10 +19,16 @@ export default function PostDetail() {
   }, [id])
 
   if (!isLoaded) {
-    return <h1>loadingggg</h1>
+    return (
+      <Layout>
+        <h1>loadingggg</h1>
+      </Layout>
+    )
   }
 
-  return(
-    <h1>{post.title}</h1>
+  return (
+    <Layout>
+      <h1>{post.title}</h1>
+    </Layout>
   )
 }
