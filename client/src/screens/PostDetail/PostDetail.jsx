@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
-import { getPost } from "../../services/post"
+import { useParams, Link, useHistory } from "react-router-dom"
+import { getPost, deletePost } from "../../services/post"
 import Layout from "../../components/Layout/Layout"
 
 export default function PostDetail() {
@@ -8,6 +8,7 @@ export default function PostDetail() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const { id } = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -35,7 +36,14 @@ export default function PostDetail() {
       <Link to={`/posts/${post._id}/edit`}>
         <button>Edit</button>
       </Link>
-      {/* <button onClick={handleDelete}>Delete</button> */}
+      <button
+        onClick={() => {
+          deletePost(post._id)
+          history.push("/posts")
+        }}
+      >
+        Delete
+      </button>
     </Layout>
   )
 }
