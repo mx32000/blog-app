@@ -1,23 +1,21 @@
 import "./App.css";
-import { getPosts } from "./services/post.js";
-import { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom"
+import Home from "./screens/Home/Home";
+import Posts from "./screens/Posts/Posts";
+import PostCreate from "./screens/PostCreate/PostCreate";
+import PostEdit from "./screens/PostEdit/PostEdit";
+import PostDetail from "./screens/PostDetail/PostDetail";
 
 function App() {
   
-  const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const allPosts = await getPosts()
-      setPosts(allPosts)
-    }
-    fetchPosts()
-  }, [])
-
   return (
-    <div>
-      { posts.map((post, index) => <p>{post.title}</p>) }
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home}/>
+      <Route exact path="/posts" component={Posts}/>
+      <Route path="/posts/new" component={PostCreate}/>
+      <Route path="/posts/:id/edit" component={PostEdit}/>
+      <Route path="/posts/:id" component={PostDetail}/>
+    </Switch>
   );
 }
 
