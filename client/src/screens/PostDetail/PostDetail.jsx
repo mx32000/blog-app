@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getPost } from "../../services/post"
+import { getPost, deletePost } from "../../services/post"
 import Layout from "../../components/Layout/Layout"
 
 export default function PostDetail() {
@@ -35,7 +35,7 @@ export default function PostDetail() {
       <Link to={`/posts/${post._id}/edit`}>
         <button>Edit</button>
       </Link>
-      {/* <button onClick={handleDelete}>Delete</button> */}
+      <button onClick={() => deletePost(post._id)}>Delete</button>
     </Layout>
   )
 }
