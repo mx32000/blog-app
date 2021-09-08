@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { getPost } from "../../services/post"
 import Layout from "../../components/Layout/Layout"
 
@@ -32,6 +32,10 @@ export default function PostDetail() {
       <img src={post.image_url} alt="picture" />
       <p>{post.content}</p>
       <p>{post.author}</p>
+      <Link to={`/posts/${post._id}/edit`}>
+        <button>Edit</button>
+      </Link>
+      {/* <button onClick={handleDelete}>Delete</button> */}
     </Layout>
   )
 }
